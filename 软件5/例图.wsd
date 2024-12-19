@@ -1,0 +1,41 @@
+@startuml
+left to right direction
+
+actor "Student" as S
+actor "Teacher" as T
+actor "Administrator" as A
+
+rectangle "Student Management System" {
+    usecase "View Course Schedule" as UC1
+    usecase "Enroll in Courses" as UC2
+    usecase "Check Grades" as UC3
+    usecase "Update Personal Information" as UC4
+    usecase "Submit Assignments" as UC5
+
+    usecase "Manage Course Content" as UC6
+    usecase "Grade Students" as UC7
+    usecase "View Class Rosters" as UC8
+    usecase "Send Announcements" as UC9
+
+    usecase "Manage Student Accounts" as UC10
+    usecase "Manage Teacher Accounts" as UC11
+    usecase "Configure System Settings" as UC12
+    usecase "Generate Reports" as UC13
+
+    S --> UC1
+    S --> UC2
+    S --> UC3
+    S --> UC4
+    S --> UC5
+
+    T --> UC6
+    T --> UC7
+    T --> UC8
+    T --> UC9
+
+    A --> UC10
+    A --> UC11
+    A --> UC12
+    A --> UC13
+}
+@enduml

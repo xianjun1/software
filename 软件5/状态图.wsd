@@ -1,0 +1,35 @@
+@startuml
+[*] --> Unregistered
+state Unregistered {
+    [*] --> NewStudent
+    NewStudent --> Registered : Complete Registration
+}
+state Registered {
+    [*] --> Active
+    Active --> Inactive : Fail to Meet Requirements
+    Inactive --> Active : Meet Requirements Again
+    Active --> Suspended : Violate Rules
+    Suspended --> Active : Appeal Approved
+    Active --> Graduated : Complete All Courses
+}
+state Active {
+    [*] --> EnrolledInCourses
+    EnrolledInCourses --> CourseCompleted : Finish Course
+    EnrolledInCourses --> CourseDropped : Drop Course
+    CourseCompleted --> EnrolledInCourses : Enroll in New Course
+}
+state EnrolledInCourses {
+    [*] --> SubmittedAssignments
+    SubmittedAssignments --> AssignmentGraded : Teacher Grades
+    AssignmentGraded --> SubmittedAssignments : Resubmit
+}
+state SubmittedAssignments {
+    [*] --> Passed : Assignment Score >= Passing Score
+    Passed --> SubmittedAssignments : Assignment Retaken
+}
+[*] -down-> Unregistered
+Registered -down-> [*]
+Active -down-> [*]
+EnrolledInCourses -down-> [*]
+SubmittedAssignments -down-> [*]
+@enduml

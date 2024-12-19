@@ -1,0 +1,49 @@
+@startuml
+class Student {
+    - studentId : int
+    - name : String
+    - age : int
+    + getStudentId() : int
+    + getName() : String
+    + getAge() : int
+    + setStudentId(int id) : void
+    + setName(String newName) : void
+    + setAge(int newAge) : void
+}
+
+class Class {
+    - classId : int
+    - className : String
+    - students : List<Student>
+    + getClassId() : int
+    + getClassName() : String
+    + addStudent(Student s) : void
+    + removeStudent(Student s) : void
+    + getStudents() : List<Student>
+}
+
+class Course {
+    - courseId : int
+    - courseName : String
+    - teacher : Teacher
+    + getCourseId() : int
+    + getCourseName() : String
+    + setTeacher(Teacher t) : void
+    + getTeacher() : Teacher
+}
+
+class Teacher {
+    - teacherId : int
+    - name : String
+    - coursesTaught : List<Course>
+    + getTeacherId() : int
+    + getName() : String
+    + addCourse(Course c) : void
+    + removeCourse(Course c) : void
+    + getCoursesTaught() : List<Course>
+}
+
+Student "1..*" -- "1" Class : belongs to
+Teacher "1" -- "1..*" Course : teaches
+Student "1..*" -- "1..*" Course : takes
+@enduml

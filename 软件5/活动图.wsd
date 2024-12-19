@@ -1,0 +1,61 @@
+@startuml
+start
+:学生登录系统;
+if (账号密码验证通过?) then (是)
+    :进入学生主界面;
+    fork
+        :查看课程信息;
+    fork again
+        :查询成绩;
+    fork again
+        :选择课程;
+    fork again
+        :更新个人信息;
+    end fork
+    :提交所选课程作业;
+    :退出系统;
+else (否)
+    :提示账号密码错误，重新登录;
+endif
+stop
+
+start
+:教师登录系统;
+if (账号密码验证通过?) then (是)
+    :进入教师主界面;
+    fork
+        :查看授课班级学生名单;
+    fork again
+        :管理课程内容（上传课件等）;
+    fork again
+        :批改学生作业;
+    fork again
+        :录入学生成绩;
+    end fork
+    :发布课程相关通知;
+    :退出系统;
+else (否)
+    :提示账号密码错误，重新登录;
+endif
+stop
+
+start
+:管理员登录系统;
+if (账号密码验证通过?) then (是)
+    :进入管理员主界面;
+    fork
+        :管理学生账号（创建、修改等）;
+    fork again
+        :管理教师账号（权限设置等）;
+    fork again
+        :配置系统设置（备份周期等）;
+    fork again
+        :生成各类报表（成绩报表等）;
+    end fork
+    :审核课程信息;
+    :退出系统;
+else (否)
+    :提示账号密码错误，重新登录;
+endif
+stop
+@enduml
